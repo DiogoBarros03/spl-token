@@ -6,7 +6,7 @@ import {
 } from "@solana-developers/helpers";
 import { Connection,PublicKey, clusterApiUrl } from "@solana/web3.js";
 
-const connection = new Connection(clusterApiUrl("devnet"));
+const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
 const user = getKeypairFromEnvironment("SECRET_KEY");
 
@@ -20,7 +20,7 @@ const tokenMintAccount = new PublicKey(
 // Here we are making an associated token account for our own address, but we can 
 // make an ATA on any other wallet in devnet!
 // const recipient = new PublicKey("SOMEONE_ELSES_DEVNET_ADDRESS");
-const recipient = user.publicKey;
+const recipient = user.publicKey
 
 const tokenAccount = await getOrCreateAssociatedTokenAccount(
     connection,
